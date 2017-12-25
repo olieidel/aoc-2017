@@ -39,17 +39,19 @@
 ;; => 1102
 
 (defn part-2 [input]
+  ;; Here's a nice simplification: We can just split the list in half
+  ;; and compare the respective values side-by-side.
   (let [half-length (/ (count input) 2)]
-       (loop [xs-left (take half-length input)
-              xs-right (drop half-length input)
-              total 0]
-         (if (empty? xs-left)
-           total
-           (if (= (first xs-left) (first xs-right))
-             ;; note the * 2 in the total as we add each number which has
-             ;; the same number half way around the list twice.
-             (recur (rest xs-left) (rest xs-right) (+ total (* 2 (first xs-left))))
-             (recur (rest xs-left) (rest xs-right) total))))))
+    (loop [xs-left (take half-length input)
+           xs-right (drop half-length input)
+           total 0]
+      (if (empty? xs-left)
+        total
+        (if (= (first xs-left) (first xs-right))
+          ;; note the * 2 in the total as we add each number which has
+          ;; the same number half way around the list twice.
+          (recur (rest xs-left) (rest xs-right) (+ total (* 2 (first xs-left))))
+          (recur (rest xs-left) (rest xs-right) total))))))
 
 (s/fdef part-2
         ;; same as `part-1`
