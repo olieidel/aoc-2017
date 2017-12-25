@@ -3,4 +3,5 @@
   :url "http://www.github.com/olieidel/aoc-2017"
   :license {:name "MIT"
             :url "https://opensource.org/licenses/MIT"}
-  :dependencies [[org.clojure/clojure "1.9.0"]])
+  :dependencies [[org.clojure/clojure "1.9.0"]
+                 [orchestra "2017.11.12-1"]])
